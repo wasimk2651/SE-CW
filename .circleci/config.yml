@@ -1,12 +1,23 @@
 version: 2.1
-orbs:
-  node: circleci/node@4.7.0
-jobs:
-  build:
-    working_directory: ~/SE-CW/src
+executors:
+  my-custom-executor:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/base:stable
+        auth:
+          # ensure you have first added these secrets
+          # visit app.circleci.com/settings/project/github/KaviduGimhan/Software-Engineering-Sprint1/environment-variables
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+jobs:
+  my-job-name:
+
+    executor: my-custom-executor
     steps:
-      - checkout:
-          path: ~/SE-CW
-      -  run: npm install
+      - checkout
+      - run: |
+          # echo Hello, World!
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - my-job-name
