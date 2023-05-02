@@ -4,8 +4,6 @@ executors:
     docker:
       - image: cimg/base:stable
         auth:
-          # ensure you have first added these secrets
-          # visit app.circleci.com/settings/project/github/KaviduGimhan/Software-Engineering-Sprint1/environment-variables
           username: $DOCKER_HUB_USER
           password: $DOCKER_HUB_PASSWORD
 jobs:
